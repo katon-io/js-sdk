@@ -1,5 +1,5 @@
 import { KatonCtxOptions } from './context/katon-ctx-options.interface'
-import { KatonPrivateCtx } from './context/katon-private.model'
+import { KatonPrivateCtx } from './context/katon-private-ctx.model'
 import { KatonPublicCtx } from './context/katon-public-ctx.model'
 
 export class KatonIO {
