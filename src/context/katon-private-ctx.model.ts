@@ -1,3 +1,5 @@
+import { AccountPrivateAPI } from 'src/account/account-private-api.model'
+import { ProjectPrivateAPI } from 'src/project/project-private-api.model'
 import { KatonCtxOptions } from './katon-ctx-options.interface'
 import { KatonPublicCtx } from './katon-public-ctx.model'
 
@@ -24,6 +26,9 @@ export class KatonPrivateCtx extends KatonPublicCtx {
     )
 
     this._privateKey = privateKey
+
+    this.accounts = AccountPrivateAPI.obj()
+    this.projects = ProjectPrivateAPI.obj()
 
     if (window || this.isProd) {
       console.warn(

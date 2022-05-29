@@ -1,3 +1,5 @@
+import { AccountPublicAPI } from 'src/account/account-public-api.model'
+import { ProjectPublicAPI } from 'src/project/project-public-api.model'
 import { KatonCtxOptions } from './katon-ctx-options.interface'
 import { KatonCtx } from './katon-ctx.abtract'
 
@@ -17,6 +19,9 @@ export class KatonPublicCtx extends KatonCtx {
     )
 
     this._publicKey = publicKey
+
+    this.accounts = AccountPublicAPI.obj()
+    this.projects = ProjectPublicAPI.obj()
   }
 
   get canWrite(): boolean {

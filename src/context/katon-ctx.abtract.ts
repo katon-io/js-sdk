@@ -1,8 +1,13 @@
+import { AccountAPI } from 'src/account/account-api.type'
 import { Blockchains } from 'src/blockchains.enum'
 import { Environments } from 'src/environments.enum'
+import { ProjectAPI } from 'src/project/project-api.type'
 import { KatonCtxOptions } from './katon-ctx-options.interface'
 
 export abstract class KatonCtx {
+  public accounts: AccountAPI
+  public projects: ProjectAPI
+
   protected _project: string
   protected _options: KatonCtxOptions
 
