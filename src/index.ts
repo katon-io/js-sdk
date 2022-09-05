@@ -1,3 +1,5 @@
+import { KatonPublicAccount } from './account/katon-public-account.model'
+import { KatonPublicAccounts } from './account/katon-public-accounts.model'
 import { KatonCtxOptions } from './context/katon-ctx-options.interface'
 import { KatonPrivateCtx } from './context/katon-private-ctx.model'
 import { KatonPublicCtx } from './context/katon-public-ctx.model'
@@ -14,9 +16,12 @@ export class KatonIO {
   static publicCtx(
     project: string,
     publicKey: string,
-    options: KatonCtxOptions,
+    options?: KatonCtxOptions,
   ): KatonPublicCtx {
-    return new KatonPublicCtx(project, publicKey, options)
+    const ctx = new KatonPublicCtx(project, publicKey, options, null)
+    ctx.accounts = KatonPublicAccounts.obj(ctx)
+
+    return ctx
   }
 
   /**
@@ -33,7 +38,7 @@ export class KatonIO {
     project: string,
     publicKey: string,
     privateKey: string,
-    options: KatonCtxOptions,
+    options?: KatonCtxOptions,
   ): KatonPrivateCtx {
     return new KatonPrivateCtx(project, publicKey, privateKey, options)
   }

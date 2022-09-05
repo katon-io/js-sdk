@@ -1,13 +1,10 @@
-import { AccountAPI } from 'src/account/account-api.type'
-import { Blockchains } from 'src/blockchains.enum'
-import { Environments } from 'src/environments.enum'
-import { ProjectAPI } from 'src/project/project-api.type'
+import { AxiosRequestHeaders } from 'axios'
+import { Config } from '../../config'
+import { Blockchain } from '../common/blockchain.enum'
+import { KatonEnvironments } from '../katon-environments.enum'
 import { KatonCtxOptions } from './katon-ctx-options.interface'
 
 export abstract class KatonCtx {
-  public accounts: AccountAPI
-  public projects: ProjectAPI
-
   protected _project: string
   protected _options: KatonCtxOptions
 
@@ -23,13 +20,9 @@ export abstract class KatonCtx {
 
     this._project = projectId
     this._options = {
-      defaultChain: ctxOptions.defaultChain || Blockchains.elrond,
-      env: ctxOptions.env || Environments.prod,
+      defaultChain: ctxOptions.defaultChain || Blockchain.elrond,
+      env: ctxOptions.env || KatonEnvironments.prod,
     }
-  }
-
-  get project(): string {
-    return this.project
   }
 
   get options(): KatonCtxOptions {
@@ -37,8 +30,31 @@ export abstract class KatonCtx {
   }
 
   get isProd(): boolean {
-    return this._options.env === Environments.prod
+    return this._options.env === KatonEnvironments.prod
+  }
+
+  get isSandbox(): boolean {
+    return this._options.env === KatonEnvironments.sandbox
+  }
+
+  get isLocal(): boolean {
+    return this._options.env === KatonEnvironments.local
+  }
+
+  get blockchain(): Blockchain {
+    return this._options.defaultChain
+  }
+
+  get baseUrl(): string {
+    if (this.isSandbox) {
+      return Config.sandboxApiUrl
+    } else if (this.isLocal) {
+      return Config.localApiUrl
+    }
+    return Config.prodApiUrl
   }
 
   abstract get canWrite(): boolean
+
+  protected abstract baseHeaders(): AxiosRequestHeaders
 }

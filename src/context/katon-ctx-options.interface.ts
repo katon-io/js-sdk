@@ -1,7 +1,7 @@
-import { Blockchains } from 'src/blockchains.enum'
-import { Environments } from 'src/environments.enum'
+import { Blockchain } from '../common/blockchain.enum'
+import { KatonEnvironments } from '../katon-environments.enum'
 
 export interface KatonCtxOptions {
-  defaultChain?: Blockchains
-  env?: Environments
+  defaultChain?: Blockchain
+  env?: KatonEnvironments
 }
