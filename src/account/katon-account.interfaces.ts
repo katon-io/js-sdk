@@ -1,5 +1,4 @@
-import { Metadata } from '../common/metadata.interface'
-import { Wallet } from '../common/wallet.model'
+import { Metadata, Wallet } from '../common'
 
 export interface AccountDto {
   id: string

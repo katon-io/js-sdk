@@ -1,13 +1,14 @@
-import { TxFundingStrategy } from '../common/tx-funding-startegy.enum'
-import { Coins, CoinUtils } from '../common/coin.utils'
 import {
+  Coins,
+  CoinUtils,
   SendCoinRequest,
   SendTokenRequest,
   TransferResponse,
   WithdrawCoinRequest,
   WithdrawTokenRequest,
-} from '../common/transfer.interfaces'
-import { KatonPrivateCtx } from '../context/katon-private-ctx.model'
+  TxFundingStrategy,
+} from '../common'
+import { KatonPrivateCtx } from '../context'
 import {
   AccountDto,
   UpdateAccountImgUrl,

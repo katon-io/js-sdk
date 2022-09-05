@@ -2,10 +2,10 @@ import {
   CoinBalance,
   CoinBalanceListResponse,
   TokenBalanceListResponse,
-} from '../common/balance.interfaces'
-import { Coins, CoinUtils } from '../common/coin.utils'
-import { KatonCtx } from '../context/katon-ctx.abtract'
-import { KatonPublicCtx } from '../context/katon-public-ctx.model'
+  Coins,
+  CoinUtils,
+} from '../common'
+import { KatonCtx, KatonPublicCtx } from '../context'
 import { AccountDto } from './katon-account.interfaces'
 
 export class KatonPublicAccount {

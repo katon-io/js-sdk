@@ -1,6 +1,6 @@
 import { AxiosError, AxiosRequestHeaders, AxiosResponse } from 'axios'
-import { KatonPrivateAccounts } from '../account/katon-private-accounts.model'
-import { HttpHeaders, jsSdkOrigin } from '../common/http.headers'
+import { KatonPrivateAccounts } from '../account'
+import { HttpHeaders, jsSdkOrigin } from '../common'
 import { KatonCtxOptions } from './katon-ctx-options.interface'
 import { KatonPublicCtx } from './katon-public-ctx.model'
 

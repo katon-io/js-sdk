@@ -7,11 +7,12 @@ import axios, {
   AxiosRequestHeaders,
   AxiosResponse,
 } from 'axios'
-import { HttpHeaders, jsSdkOrigin } from '../common/http.headers'
-import { KatonAccounts } from '../account/katon-accounts.type'
+import { HttpHeaders, jsSdkOrigin } from '../common'
+import { KatonAccounts } from '../account'
 
 export class KatonPublicCtx extends KatonCtx {
   accounts: KatonAccounts
+
   protected _publicKey: string
   protected _http: Axios
 

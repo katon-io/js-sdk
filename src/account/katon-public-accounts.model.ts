@@ -1,5 +1,4 @@
-import { KatonCtx } from '../context/katon-ctx.abtract'
-import { KatonPublicCtx } from '../context/katon-public-ctx.model'
+import { KatonCtx, KatonPublicCtx } from '../context'
 import {
   AccountDto,
   AccountDtoListResponse,

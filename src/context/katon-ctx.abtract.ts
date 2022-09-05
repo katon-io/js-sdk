@@ -1,7 +1,5 @@
 import { AxiosRequestHeaders } from 'axios'
-import { Config } from '../../config'
-import { Blockchain } from '../common/blockchain.enum'
-import { KatonEnvironments } from '../katon-environments.enum'
+import { Config, Blockchain, KatonEnvironments } from '../common'
 import { KatonCtxOptions } from './katon-ctx-options.interface'
 
 export abstract class KatonCtx {

@@ -1,4 +1,4 @@
-import { KatonCtx } from '../context/katon-ctx.abtract'
+import { KatonCtx } from '../context'
 
 export enum Coins {
   egld = 'EGLD',

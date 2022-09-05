@@ -1,4 +1,4 @@
-import { KatonPrivateCtx } from '../context/katon-private-ctx.model'
+import { KatonPrivateCtx } from '../context'
 import { AccountDto, CreateAccountRequest } from './katon-account.interfaces'
 import { KatonPrivateAccount } from './katon-private-account.model'
 import { KatonPublicAccounts } from './katon-public-accounts.model'
