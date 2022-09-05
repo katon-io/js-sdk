@@ -74,19 +74,9 @@ const ctx: KatonPrivateCtx = KatonIO.privateCtx(
 Not all the APIs are directly wrapped in the SDK (just yet... 😇). But no worries, we provided you with generic methods that encapsulate all the logic to authenticate requests!
 
 ```ts
-/**
- * Available in public & private contexts.
- */
-
-
 // Perform an authenticated GET requests to Katon.io Core API.
 // T is the expected type of the data returned from the API.
 async doGet<T>(path: string): Promise<T>;
-
-/**
- * Available only in private contexts.
- */
-
 
 // Perform an authenticated POST requests to Katon.io Core API.
 // T is the expected type of the data returned from the API.
