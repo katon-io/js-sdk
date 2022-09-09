@@ -1,6 +1,6 @@
 {
   "name": "katon.io-js-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Katon.io official Javascript SDK",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
