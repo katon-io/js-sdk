@@ -26,12 +26,6 @@ All interactions must be authenticated. 🔐 Authentication is done through API 
 npm install --save katon.io-js-sdk
 ```
 
-If you are using typescript, you can also run:
-
-```sh
-npm install --save-dev @types/katon.io-js-sdk
-```
-
 ### First Steps
 
 The interactions are separated in two types. 
