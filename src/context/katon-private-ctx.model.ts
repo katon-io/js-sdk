@@ -39,7 +39,9 @@ export class KatonPrivateCtx extends KatonPublicCtx {
       .post<T, AxiosResponse<T>, U>(`${this.baseUrl}${path}`, body, {
         headers: this.baseHeaders(),
       })
-      .catch((err: AxiosError) => Promise.reject(err.response.data))
+      .catch((err: AxiosError) =>
+        Promise.reject(err.response?.data || err.request || err.message),
+      )
 
     return response.data
   }
@@ -49,7 +51,9 @@ export class KatonPrivateCtx extends KatonPublicCtx {
       .put<T, AxiosResponse<T>, U>(`${this.baseUrl}${path}`, body, {
         headers: this.baseHeaders(),
       })
-      .catch((err: AxiosError) => Promise.reject(err.response.data))
+      .catch((err: AxiosError) =>
+        Promise.reject(err.response?.data || err.request || err.message),
+      )
 
     return response.data
   }
@@ -59,7 +63,9 @@ export class KatonPrivateCtx extends KatonPublicCtx {
       .patch<T, AxiosResponse<T>, U>(`${this.baseUrl}${path}`, body, {
         headers: this.baseHeaders(),
       })
-      .catch((err: AxiosError) => Promise.reject(err.response.data))
+      .catch((err: AxiosError) =>
+        Promise.reject(err.response?.data || err.request || err.message),
+      )
 
     return response.data
   }
@@ -69,7 +75,9 @@ export class KatonPrivateCtx extends KatonPublicCtx {
       .delete<T, AxiosResponse<T>>(`${this.baseUrl}${path}`, {
         headers: this.baseHeaders(),
       })
-      .catch((err: AxiosError) => Promise.reject(err.response.data))
+      .catch((err: AxiosError) =>
+        Promise.reject(err.response?.data || err.request || err.message),
+      )
 
     return response.data
   }

@@ -52,7 +52,9 @@ export class KatonPublicCtx extends KatonCtx {
       .get<T, AxiosResponse<T>>(`${this.baseUrl}${path}`, {
         headers: this.baseHeaders(),
       })
-      .catch((err: AxiosError) => Promise.reject(err.response.data))
+      .catch((err: AxiosError) =>
+        Promise.reject(err.response?.data || err.request || err.message),
+      )
     return response.data
   }
 
