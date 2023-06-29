@@ -35,14 +35,6 @@ export class KatonPublicAccount {
     return this._uuid
   }
 
-  get firstName(): string {
-    return this._account?.userFirstName
-  }
-
-  get initialEmail(): string {
-    return this._account?.initialEmail
-  }
-
   get tag(): string {
     return this._account?.tag
   }

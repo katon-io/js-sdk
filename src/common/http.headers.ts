@@ -1,5 +1,4 @@
 export enum HttpHeaders {
-  AuthorizationRefreshHeader = 'katon-ctx-refresh',
   KatonOriginHeader = 'katon-ctx-origin',
   KatonContextProject = 'katon-ctx-project',
   KatonPublicKeyHeader = 'katon-ctx-public-key',

@@ -1,16 +1,16 @@
-import { Metadata, Wallet } from '../common'
+import { Blockchain, BlockchainSpecificWallet, Metadata } from '../common'
 
-export interface AccountDto {
+export class AccountDto {
   id: string
-  initialEmail: string
-  wallet: Wallet
+  heroTag: string
+  hash: string
+  wallet: BlockchainSpecificWallet
   locked: boolean
   userId?: string
-  userFirstName?: string
-  userLastName?: string
-  userEmail?: string
+  userHero?: string
   projectId: string
   projectName: string
+  projectBlockchain: Blockchain
   projectImgUrl?: string
   tag?: string
   imgUrl?: string

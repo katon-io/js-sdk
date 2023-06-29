@@ -11,4 +11,5 @@ export class Wallet {
 export class BlockchainSpecificWallet {
   address: string
   blockchain: Blockchain
+  custodial: boolean
 }

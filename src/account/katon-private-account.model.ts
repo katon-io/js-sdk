@@ -3,10 +3,8 @@ import {
   CoinUtils,
   SendCoinRequest,
   SendTokenRequest,
-  TransferResponse,
-  WithdrawCoinRequest,
-  WithdrawTokenRequest,
   TxFundingStrategy,
+  TxProcessing,
 } from '../common'
 import { KatonPrivateCtx } from '../context'
 import {
@@ -74,84 +72,38 @@ export class KatonPrivateAccount extends KatonPublicAccount {
     this._account = account
   }
 
-  async sendToken(
+  async sendTokenToAccount(
     tokenNetworkIdentifier: Coins | string,
-    amount: number,
+    amount: string,
     receiver: KatonAccount | string,
     txFundingStrategy: TxFundingStrategy = TxFundingStrategy.owner,
-  ): Promise<TransferResponse> {
+  ): Promise<TxProcessing> {
     return (this._ctx as KatonPrivateCtx).doPost<
-      TransferResponse,
+      TxProcessing,
       SendTokenRequest
     >(
-      `/v1/transfers/token/${tokenNetworkIdentifier}/send?account=${this._uuid}&txFundingStrategy=${txFundingStrategy}`,
+      `/v1/transfers/tokens/${tokenNetworkIdentifier}?account=${this._uuid}&txFundingStrategy=${txFundingStrategy}`,
       {
         amount,
-        to: typeof receiver === 'string' ? receiver : receiver.id,
+        toAccount: typeof receiver === 'string' ? receiver : receiver.id,
       },
     )
   }
 
-  async withdrawToken(
-    tokenNetworkIdentifier: string,
-    amount: number,
-    toAddress: string,
-    txFundingStrategy: TxFundingStrategy = TxFundingStrategy.owner,
-  ): Promise<TransferResponse> {
-    return (this._ctx as KatonPrivateCtx).doPost<
-      TransferResponse,
-      WithdrawTokenRequest
-    >(
-      `/v1/transfers/token/${tokenNetworkIdentifier}/withdraw?account=${this._uuid}&txFundingStrategy=${txFundingStrategy}`,
-      {
-        amount,
-        toAddress,
-      },
-    )
-  }
-
-  async send(
+  async sendCoinToAccount(
     coinOrNetworkId: Coins | string,
-    amount: number,
+    amount: string,
     receiver: KatonAccount | string,
     txFundingStrategy: TxFundingStrategy = TxFundingStrategy.owner,
-    fee?: number,
-  ): Promise<TransferResponse> {
-    return (this._ctx as KatonPrivateCtx).doPost<
-      TransferResponse,
-      SendCoinRequest
-    >(
-      `/v1/transfers/coin/${CoinUtils.ctxNetworkId(
+  ): Promise<TxProcessing> {
+    return (this._ctx as KatonPrivateCtx).doPost<TxProcessing, SendCoinRequest>(
+      `/v1/transfers/coins/${CoinUtils.ctxNetworkId(
         this._ctx,
         coinOrNetworkId,
-      )}/send?account=${this._uuid}&txFundingStrategy=${txFundingStrategy}`,
+      )}?account=${this._uuid}&txFundingStrategy=${txFundingStrategy}`,
       {
         amount,
-        to: typeof receiver === 'string' ? receiver : receiver.id,
-        fee,
-      },
-    )
-  }
-
-  async withdraw(
-    coinOrNetworkId: Coins | string,
-    amount: number,
-    toAddress: string,
-    txFundingStrategy: TxFundingStrategy = TxFundingStrategy.owner,
-    fee?: number,
-  ): Promise<TransferResponse> {
-    return (this._ctx as KatonPrivateCtx).doPost<
-      TransferResponse,
-      WithdrawCoinRequest
-    >(
-      `/v1/transfers/coin/${CoinUtils.ctxNetworkId(
-        this._ctx,
-        coinOrNetworkId,
-      )}/withdraw?account=${this._uuid}&txFundingStrategy=${txFundingStrategy}`,
-      {
-        amount,
-        toAddress,
-        fee,
+        toAccount: typeof receiver === 'string' ? receiver : receiver.id,
       },
     )
   }

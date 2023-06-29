@@ -10,7 +10,6 @@ The package contains handy methods to:
 - perform coin and token transfers between accounts or withdraw assets to an external wallet.
 
 ## Getting Started
-🛑🛑🛑 Only the sandbox environment is currently available. 🛑🛑🛑
 
 ### Prerequisites
 #### Context
