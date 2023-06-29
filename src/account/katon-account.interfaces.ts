@@ -28,7 +28,7 @@ export interface KatonAccountListResponse<T> {
 }
 
 export interface CreateAccountRequest {
-  initialEmail: string
+  emailToBeHashed: string
   imgUrl?: string
   tag?: string
   label?: string

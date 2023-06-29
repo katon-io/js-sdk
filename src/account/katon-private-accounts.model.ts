@@ -25,7 +25,7 @@ export class KatonPrivateAccounts extends KatonPublicAccounts {
   }
 
   async createOrFetch(
-    initialEmail: string,
+    emailToBeHashed: string,
     tag?: string,
     label?: string,
     locked?: boolean,
@@ -33,7 +33,7 @@ export class KatonPrivateAccounts extends KatonPublicAccounts {
   ): Promise<KatonPrivateAccount> {
     const accountDto = await this._ctx.doPost<AccountDto, CreateAccountRequest>(
       '/v1/accounts',
-      { initialEmail, tag, label, locked, imgUrl },
+      { emailToBeHashed, tag, label, locked, imgUrl },
     )
 
     return new KatonPrivateAccount(this._ctx, accountDto.id, accountDto)
